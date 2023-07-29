@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate, useLoaderData, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
@@ -10,6 +10,8 @@ const Header = ({ setdata, data }) => {
   const { User } = useSelector((state) => state.Auth);
   const navigate = useNavigate();
   console.log({ User });
+  const location = useLocation();
+  console.log({ path: location.pathname });
 
   return (
     <div className="bg-[#4d4646] flex text-[#ffff] px-[20px] h-[70px] sticky top-0 z-10  items-center justify-between">
@@ -27,25 +29,31 @@ const Header = ({ setdata, data }) => {
             onClick={() => {
               navigate('/Signin');
             }}
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className={`text-white bg-blue-700 ${
+              location.pathname === '/Signin' && 'hidden'
+            } hover:bg-blue-800 focus:ring-4 $focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800`}
           >
             Sign In
           </button>
         )}
-        <div
-          className="relative p-1"
-          onClick={() => {
-            navigate('/cart');
-          }}
-        >
-          <AiOutlineShoppingCart
-            size={35}
-            style={{ marginRight: '3px', marginTop: '5px' }}
-          />
-          <p className="absolute top-0 right-0 mb-3 font-semibold text-[#fab0b0]">
-            {Cart.reduce((a, c) => a + c.quantity, 0)}
-          </p>
-        </div>
+        {location.pathname === '/Signin' ? (
+          ''
+        ) : (
+          <div
+            className="relative p-1"
+            onClick={() => {
+              navigate('/cart');
+            }}
+          >
+            <AiOutlineShoppingCart
+              size={35}
+              style={{ marginRight: '3px', marginTop: '5px' }}
+            />
+            <p className="absolute top-0 right-0 mb-3 font-semibold text-[#fab0b0]">
+              {Cart.reduce((a, c) => a + c.quantity, 0)}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
