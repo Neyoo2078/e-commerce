@@ -12,7 +12,7 @@ const CartProductD = ({ items, order }) => {
   const AddCartHandler = async () => {
     const exist = Cart.find((p) => p._id === items._id);
     const quantity = exist ? exist.quantity + 1 : 1;
-    const data = await Api.get(`/${items._id}`);
+    const data = await Api.get(`/details/${items._id}`);
     if (data.countInStock < quantity) {
       window.alert('product of of Stock');
     }
@@ -22,7 +22,7 @@ const CartProductD = ({ items, order }) => {
   const RemoveCartHandler = async () => {
     const exist = Cart.find((p) => p._id === items._id);
     const quantity = exist ? exist.quantity - 1 : 1;
-    const data = await Api.get(`/${items._id}`);
+    const data = await Api.get(`/details/${items._id}`);
     if (data.countInStock < quantity) {
       window.alert('product of of Stock');
     }
@@ -34,22 +34,22 @@ const CartProductD = ({ items, order }) => {
   };
 
   return (
-    <div className='w-full flex justify-between items-center'>
-      <div className='p-1 flex   h-[155px] my-auto w-[50%] '>
+    <div className="w-full flex justify-between items-center">
+      <div className="p-1 flex   h-[155px] my-auto w-[50%] ">
         <img
-          className=' w-[115px] h-[145px] mr-3 '
+          className=" w-[115px] h-[145px] mr-3 "
           src={items.image}
           alt={items.name}
         />
         <Link
           to={`/productDetails/${items._id} `}
-          className='m-auto cursor-pointer'
+          className="m-auto cursor-pointer"
         >
-          <p className='text-[#4954f8]'>{items.name}</p>
+          <p className="text-[#4954f8]">{items.name}</p>
         </Link>
       </div>
       {!order && (
-        <div className='flex  w-[17%] '>
+        <div className="flex  w-[17%] ">
           <button
             onClick={RemoveCartHandler}
             disabled={items.quantity === 1}
@@ -58,27 +58,27 @@ const CartProductD = ({ items, order }) => {
             -
           </button>
 
-          <p className='m-auto '>{items.quantity}</p>
+          <p className="m-auto ">{items.quantity}</p>
           <button
             onClick={AddCartHandler}
             disabled={items.quantity === items.countInStock}
-            className='justify-center w-[35px] h-[35px] bg-slate-400 '
+            className="justify-center cursor-pointer w-[35px] h-[35px] bg-slate-400 "
           >
             +
           </button>
         </div>
       )}
       {order && (
-        <div className='w-[10%]'>
-          <p className='m-auto '>{items.quantity}</p>
+        <div className="w-[10%]">
+          <p className="m-auto ">{items.quantity}</p>
         </div>
       )}
 
-      <div className='w-[10%]'>
+      <div className="w-[10%]">
         <p>${items.price}</p>
       </div>
       {!order && (
-        <div className='w-[10%]' onClick={DeleteItem}>
+        <div className="w-[10%]" onClick={DeleteItem}>
           <AiFillDelete size={20} />
         </div>
       )}

@@ -2,7 +2,6 @@ import { Api } from '../Api/Api';
 import { FetchDetails, Ploading } from '../Reducers/PDetailreducer';
 
 export const PDetails = (id) => async (dispatch) => {
-  console.log('got here');
   try {
     dispatch(Ploading(true));
 

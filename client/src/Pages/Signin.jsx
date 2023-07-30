@@ -61,9 +61,6 @@ const Signin = () => {
   const [EmailValid, setEmailValid] = useState(false);
   const [PwdValid, setPwdValid] = useState(false);
 
-  console.log({ SigninD });
-  console.log({ Signup });
-
   const FormHandler = async (e) => {
     e.preventDefault();
 
@@ -126,53 +123,53 @@ const Signin = () => {
   };
 
   return (
-    <div className='w-full p-[30px] h-screen bg-slate-400'>
+    <div className="w-full p-[30px] h-screen bg-slate-400">
       <Helmet>
         <title>{Signup ? 'Sign up' : 'Sign in'}</title>
       </Helmet>
-      <div className='w-full flex  h-full items-center'>
-        <div className='m-auto flex flex-col gap-5 border-[2px] p-7 w-[25%] '>
-          <div className=' w-full  m-auto p-2'>
-            <p className='text-center'>
+      <div className="w-full flex  h-full items-center">
+        <div className="m-auto flex flex-col gap-5 border-[2px] p-7 w-[25%] ">
+          <div className=" w-full  m-auto p-2">
+            <p className="text-center">
               {EmailFocus && !EmailOk && 'Invalid Email Address'}
             </p>
-            <p className='text-center'>
+            <p className="text-center">
               {ESignFocus && !EmailValid && 'Invalid Email Address'}
             </p>
 
-            <p className='text-center'>
+            <p className="text-center">
               {RePwdFocus && !RePwdMatch && 'Password Not Match'}
             </p>
-            <p className='w-[300px] justify-center text-center'>
+            <p className="w-[300px] justify-center text-center">
               {PwdFocus &&
                 !PwdOk &&
                 ' Minimum of 8 character including an Upercase,Lower case & any special character or Number'}
             </p>
-            <p className='w-[300px] justify-center text-center'>
+            <p className="w-[300px] justify-center text-center">
               {PSignFocus &&
                 !PwdValid &&
                 ' Minimum of 8 character including an Upercase,Lower case & any special character or Number'}
             </p>
           </div>
-          <div className='flex items-center justify-center gap-2'>
-            <h1 className='font-semibold text-[20px]'>
+          <div className="flex items-center justify-center gap-2">
+            <h1 className="font-semibold text-[20px]">
               {Signup ? 'Sign up' : 'Sign in'}
             </h1>
-            <div className='rounded-full bg-[#c92424] p-2'>
-              <FaLock size={20} color='#FFFFFF' />
+            <div className="rounded-full bg-[#c92424] p-2">
+              <FaLock size={20} color="#FFFFFF" />
             </div>
           </div>
           <form
-            className='flex flex-col justify-center gap-5'
+            className="flex flex-col justify-center gap-5"
             onSubmit={FormHandler}
           >
             {!Signup && (
-              <div className='flex flex-col justify-center gap-5'>
+              <div className="flex flex-col justify-center gap-5">
                 <input
-                  placeholder='Email'
-                  className=' outline-none p-2 rounded-sm'
-                  type='email'
-                  name='email'
+                  placeholder="Email"
+                  className=" outline-none p-2 rounded-sm"
+                  type="email"
+                  name="email"
                   onChange={DetailHandler}
                   required
                   onFocus={() => {
@@ -183,10 +180,10 @@ const Signin = () => {
                   }}
                 />
                 <input
-                  name='password'
+                  name="password"
                   type={ShowPassword ? `text` : `password`}
-                  placeholder='Password'
-                  className=' outline-none p-2 rounded-sm '
+                  placeholder="Password"
+                  className=" outline-none p-2 rounded-sm "
                   onChange={DetailHandler}
                   required
                   onFocus={() => {
@@ -199,24 +196,24 @@ const Signin = () => {
               </div>
             )}
             {Signup && (
-              <div className='flex flex-col justify-center gap-5'>
+              <div className="flex flex-col justify-center gap-5">
                 <input
-                  placeholder='User Name'
-                  className=' outline-none p-2 rounded-sm'
-                  type='text'
+                  placeholder="User Name"
+                  className=" outline-none p-2 rounded-sm"
+                  type="text"
                   value={SignupD.username}
                   required
                   onChange={DetailHandler}
-                  name='username'
-                  maxLength='15'
+                  name="username"
+                  maxLength="15"
                 />
 
                 <input
-                  placeholder='Email'
+                  placeholder="Email"
                   value={SignupD.email}
-                  className=' outline-none p-2 rounded-sm'
-                  type='email'
-                  name='email'
+                  className=" outline-none p-2 rounded-sm"
+                  type="email"
+                  name="email"
                   required
                   onChange={DetailHandler}
                   onFocus={() => {
@@ -226,13 +223,13 @@ const Signin = () => {
                     setEmailFocus(false);
                   }}
                 />
-                <div className='bg-white flex items-center justify-between'>
+                <div className="bg-white flex items-center justify-between">
                   <input
-                    name='password'
+                    name="password"
                     value={SignupD.password}
                     type={ShowPassword ? `text` : `password`}
-                    placeholder='Password'
-                    className=' outline-none p-2 rounded-sm '
+                    placeholder="Password"
+                    className=" outline-none p-2 rounded-sm "
                     required
                     onChange={DetailHandler}
                     onFocus={() => {
@@ -259,9 +256,9 @@ const Signin = () => {
                   )}
                 </div>
 
-                <div className='bg-white flex items-center'>
+                <div className="bg-white flex items-center">
                   <input
-                    name='repassword'
+                    name="repassword"
                     value={SigninD.repassword}
                     required
                     onFocus={() => {
@@ -272,15 +269,15 @@ const Signin = () => {
                       setRePwdFocus(false);
                     }}
                     type={`password`}
-                    placeholder=' Confirm Password'
-                    className=' outline-none p-2 rounded-sm  w-full'
+                    placeholder=" Confirm Password"
+                    className=" outline-none p-2 rounded-sm  w-full"
                   />
                 </div>
               </div>
             )}
             <button
-              className='bg-white outline-none p-2 rounded-sm'
-              type='submit'
+              className="bg-white outline-none p-2 rounded-sm"
+              type="submit"
             >
               {Signup ? 'Sign up' : 'Sign in'}
             </button>
@@ -293,7 +290,7 @@ const Signin = () => {
                   onClick={() => {
                     setSignup(!Signup);
                   }}
-                  className='text-[#613fe9] mx-1 cursor-pointer italic'
+                  className="text-[#613fe9] mx-1 cursor-pointer italic"
                 >
                   Sign up
                 </span>
@@ -306,7 +303,7 @@ const Signin = () => {
                   onClick={() => {
                     setSignup(!Signup);
                   }}
-                  className='text-[#613fe9] mx-1 cursor-pointer italic'
+                  className="text-[#613fe9] mx-1 cursor-pointer italic"
                 >
                   Log In
                 </span>

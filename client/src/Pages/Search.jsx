@@ -21,7 +21,6 @@ const Search = () => {
   const [SearchLoading, setSearchLoading] = useState(true);
   const [SearchData, setSearchData] = useState([]);
   const [numberOfPages, setnumberOfPages] = useState(null);
-  console.log({ numberOfPages });
 
   useEffect(() => {
     const getCat = async () => {
@@ -53,7 +52,7 @@ const Search = () => {
         const { data } = await Api.get(
           `/search?Category=${Category}&q=${q}&Price=${Price}&Ratings=${Ratings}&Sort=${Sort}&Page=${Page}`
         );
-        console.log({ data });
+
         setSearchData(data.data);
         setnumberOfPages({
           numberOfPages: data.numberOfPages,
@@ -79,42 +78,42 @@ const Search = () => {
   };
 
   return (
-    <div className='w-full'>
+    <div className="w-full">
       {catLoading ? (
-        <div className='mx-auto mt-9'>
+        <div className="mx-auto mt-9">
           {' '}
-          <Loading message='Loaing data' />
+          <Loading message="Loaing data" />
         </div>
       ) : (
-        <div className='flex flex-col items-center p-[20px] w-full'>
+        <div className="flex flex-col items-center p-[20px] w-full">
           <div>
             <div></div>
-            <div className='flex gap-3'>
-              <label htmlFor='sort'>Sort Products:</label>
+            <div className="flex gap-3">
+              <label htmlFor="sort">Sort Products:</label>
               <select
                 onChange={(e) => {
                   const m = FetchUrl({ Sort: e.target.value });
                   navigate(m);
                   console.log(e.target.value);
                 }}
-                id='sort'
-                className=' text-black'
+                id="sort"
+                className=" text-black"
               >
-                <option className='text-black' value='newest'>
+                <option className="text-black" value="newest">
                   Newest Arrivals
                 </option>
-                <option value='lowest'>Price: Low to High</option>
-                <option value='highest'>Price: High to low</option>
-                <option value='toprated'>Avg:Customers Review</option>
+                <option value="lowest">Price: Low to High</option>
+                <option value="highest">Price: High to low</option>
+                <option value="toprated">Avg:Customers Review</option>
               </select>
             </div>
           </div>
-          <div className='flex  justify-between p-[20px]  w-[90%] m-auto'>
-            <div className=' flex flex-col w-[20%] gap-1  p-[10px] border-[2px] justify-center'>
+          <div className="flex  justify-between p-[20px]  w-[90%] m-auto">
+            <div className=" flex flex-col w-[20%] gap-1  p-[10px] border-[2px] justify-center">
               <div>
-                <h1 className='text-[20px] m-auto font-semibold'>Categories</h1>
+                <h1 className="text-[20px] m-auto font-semibold">Categories</h1>
               </div>
-              <div className=' flex flex-col w-[100%] gap-2  p-[5px] justify-center'>
+              <div className=" flex flex-col w-[100%] gap-2  p-[5px] justify-center">
                 <Link
                   className={`text-[15px] ${
                     Category === 'All' && 'text-[20px] text-[#7083ed]'
@@ -134,12 +133,12 @@ const Search = () => {
                   </Link>
                 ))}
               </div>
-              <div className='border-[1px] w-[100%] m-auto' />
+              <div className="border-[1px] w-[100%] m-auto" />
               <div>
                 {' '}
-                <h1 className='text-[20px] m-auto font-semibold'>Price</h1>
+                <h1 className="text-[20px] m-auto font-semibold">Price</h1>
               </div>
-              <div className=' flex flex-col w-full gap-2 border-[2px] p-2  justify-center'>
+              <div className=" flex flex-col w-full gap-2 border-[2px] p-2  justify-center">
                 <Link
                   className={`text-[15px]   ${
                     Price === 'All' && 'text-[20px] text-[#7083ed] underline'
@@ -160,34 +159,34 @@ const Search = () => {
                   </Link>
                 ))}
               </div>
-              <div className='border-[1px] w-[100%] m-auto' />
+              <div className="border-[1px] w-[100%] m-auto" />
               <div>
                 {' '}
-                <h1 className='text-[20px] m-auto font-semibold'>
+                <h1 className="text-[20px] m-auto font-semibold">
                   Customer Avg Review
                 </h1>
               </div>
-              <div className=' flex flex-col w-full gap-2  p-[5px] justify-center'>
+              <div className=" flex flex-col w-full gap-2  p-[5px] justify-center">
                 {ratingArray.map((rating) => (
                   <Link
-                    className='text-[#FFD700] w-full flex'
+                    className="text-[#FFD700] w-full flex"
                     to={FetchUrl({ Ratings: rating.value })}
                   >
                     <Rating rating={rating.rating} />
-                    <span className='font-semibold'> & Up</span>
+                    <span className="font-semibold"> & Up</span>
                   </Link>
                 ))}
               </div>
             </div>
-            <div className='w-[80%] px-[15px]'>
+            <div className="w-[80%] px-[15px]">
               <div>
                 {SearchLoading ? (
-                  <div className='flex flex-wrap gap-2 justify-center w-full  h-[550px]'>
+                  <div className="flex flex-wrap gap-2 justify-center w-full  h-[550px]">
                     Loading...
                   </div>
                 ) : (
-                  <div className='flex flex-col gap-2 '>
-                    <div className='flex flex-wrap gap-2 justify-start w-full  h-[550px]'>
+                  <div className="flex flex-col gap-2 ">
+                    <div className="flex flex-wrap gap-2 justify-start w-full  h-[550px]">
                       {SearchData?.map((items) => (
                         <>
                           <ProductCard product={items} />
@@ -197,7 +196,7 @@ const Search = () => {
                   </div>
                 )}
               </div>
-              <div className='flex justify-center items-center'>
+              <div className="flex justify-center items-center">
                 {[...new Array(numberOfPages.numberOfPages).keys()].map((x) => (
                   <div
                     onClick={() => {

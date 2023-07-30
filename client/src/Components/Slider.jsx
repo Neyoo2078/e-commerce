@@ -48,11 +48,11 @@ const dotStyle = {
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const slides = [
-    { url: 'http://localhost:3000/images/image-1.jpg', title: 'beach' },
-    { url: 'http://localhost:3000/images/image-2.jpg', title: 'boat' },
-    { url: 'http://localhost:3000/images/image-3.jpg', title: 'forest' },
-    { url: 'http://localhost:3000/images/image-4.jpg', title: 'city' },
-    { url: 'http://localhost:3000/images/image-5.jpg', title: 'italy' },
+    { url: '/images/image-1.jpg', title: 'beach' },
+    { url: '/images/image-2.jpg', title: 'boat' },
+    { url: '/images/image-3.jpg', title: 'forest' },
+    { url: '/images/image-4.jpg', title: 'city' },
+    { url: '/images/image-5.jpg', title: 'italy' },
   ];
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0;
@@ -79,7 +79,7 @@ const ImageSlider = () => {
   }, [currentIndex]);
 
   return (
-    <div className='border-[2px] relative w-full  md:w-[55%]  h-[300px] md:min-h-[400px]'>
+    <div className="border-[2px] relative w-full  md:w-[55%]  h-[300px] md:min-h-[400px]">
       <div>
         <div onClick={goToPrevious} style={leftArrowStyles}>
           ❰

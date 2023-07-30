@@ -22,7 +22,6 @@ export const userSignup = async (req, res) => {
   }
 };
 export const userSignin = async (req, res) => {
-  console.log(req.body);
   try {
     const { email, password } = req.body;
     const exist = await UserModel.findOne({ email });
@@ -67,7 +66,7 @@ export const userUpdate = async (req, res) => {
         { username, email, password: hashPassword },
         { new: true }
       );
-      console.log(newprofile);
+
       const token = Jwt.sign(
         {
           username: newprofile.username,

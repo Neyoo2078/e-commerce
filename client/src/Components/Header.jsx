@@ -9,9 +9,8 @@ const Header = ({ setdata, data }) => {
   const { Cart } = useSelector((state) => state.Cart);
   const { User } = useSelector((state) => state.Auth);
   const navigate = useNavigate();
-  console.log({ User });
+
   const location = useLocation();
-  console.log({ path: location.pathname });
 
   return (
     <div className="bg-[#4d4646] flex text-[#ffff] px-[20px] h-[70px] sticky top-0 z-10  items-center justify-between">

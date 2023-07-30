@@ -13,7 +13,6 @@ const ProductDeatils = () => {
   const { value, PLoading } = useSelector((state) => state.PDetails);
   const { Cart } = useSelector((state) => state.Cart);
 
-  console.log({ value, PLoading });
   const dispatch = useDispatch();
 
   const { id } = useParams();
@@ -24,7 +23,7 @@ const ProductDeatils = () => {
   const AddCartHandler = async () => {
     const exist = Cart.find((p) => p._id === value._id);
     const quantity = exist ? exist.quantity + 1 : 1;
-    const data = await Api.get(`/details/${value._id}`);
+    const data = await Api.get(`/products/details/${value._id}`);
     if (data.countInStock < quantity) {
       window.alert('product of of Stock');
     }

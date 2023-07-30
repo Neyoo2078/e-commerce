@@ -21,15 +21,15 @@ import Search from './Pages/Search';
 import Footer from './Components/Footer';
 import { useLocation } from 'react-router-dom';
 import DashBoard from './Pages/DashBoard';
+import Footers from './Components/Footer/Footer';
 
 function App() {
   const { User } = useSelector((state) => state.Auth);
 
   const location = useLocation();
-  console.log('niyi');
+
   const niyi = process.env.REACT_APP_MY_TEST;
-  console.log({ niyi });
-  console.log({ User });
+
   const [data, setdata] = useState([]);
 
   return (
@@ -52,6 +52,8 @@ function App() {
             <Route path="/Search" element={<Search />} />
             <Route path="/DashBoard" element={<DashBoard />} />
           </Routes>
+
+          <Footers />
         </div>
       </div>
     </>
